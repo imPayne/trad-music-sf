@@ -47,18 +47,49 @@ Création des entités :
 php bin/console make:entity
 ```
 
-Création des fichiers de migration:
+Création des fichiers de migration :
 
 ```shell
 php bin/console make:migration
 ```
 
-Exécution des migrations:
+Exécution des migrations :
 
 ```shell
 php bin/console doctrine:migrations:migrate
 ```
 
+Installer DoctrineFixturesBundle :
+
+```shell
+composer req --dev orm-fixtures
+```
+
+Créer les fixtures :
+
+```shell
+php bin/console make:fixture
+```
+
+Exécution des fixtures :
+
+```shell
+php bin/console doctrine:fixtures:load # php bin/console d:f:l
+```
+
+### Création d'une nouvelle page
+
+Création d'un controller :
+
+```shell
+php bin/console make:controller
+```
+
+Installation de Twig :
+
+```shell
+composer require twig
+```
 
 ## Installation du projet
 
@@ -77,7 +108,10 @@ DATABASE_URL="mysql://root:@127.0.0.1:3306/trad_music_sf?serverVersion=5.7&chars
 Création de la base de données :
 
 ```shell
+php bin/console doctrine:database:drop --force
 php bin/console doctrine:database:create
+php bin/console doctrine:migrations:migrate
+php bin/console doctrine:fixtures:load
 ```
 
 OPTIONNEL : démarrer le serveur PHP (ou utiliser le serveur Apache de WAMP) :

@@ -19,6 +19,11 @@ class Instrument
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $icon = null;
 
+    public function __construct($name = null)
+    {
+        $this->setName($name);
+    }
+
     public function getId(): ?int
     {
         return $this->id;
